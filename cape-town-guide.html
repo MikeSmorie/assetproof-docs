@@ -1,0 +1,199 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Cape Town, Sorted — your guest guide</title><meta name='description' content='A free local guide — top sights, hidden gems, beat-the-crowds timing, and a live concierge that plans your day around today&#39;s weather. Compiled with care by AssetProof.'><meta property='og:type' content='website'><meta property='og:title' content='Your City, Sorted — a free local guide &amp; concierge'><meta property='og:description' content='Top sights, hidden gems, and a live concierge that tailors your day to the weather, your taste and your time. A gift from AssetProof.'><meta property='og:image' content='https://mikesmorie.github.io/assetproof-docs/guide-preview.png'><meta property='og:image:width' content='1200'><meta property='og:image:height' content='630'><meta property='og:url' content='https://assetproofsolutions.com/guide/cape-town'><meta name='twitter:card' content='summary_large_image'><meta name='twitter:title' content='Your City, Sorted — a free local guide &amp; concierge'><meta name='twitter:description' content='Top sights, hidden gems, and a live concierge that tailors your day to the weather, your taste and your time. A gift from AssetProof.'><meta name='twitter:image' content='https://mikesmorie.github.io/assetproof-docs/guide-preview.png'><style>
+    
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:wght@400;700&display=swap');
+* { box-sizing:border-box; }
+body { font-family:'Lato',sans-serif; color:#0B1B2B; margin:0; line-height:1.5; }
+h1,h2,h3 { font-family:'Poppins',sans-serif; color:#0F2742; margin:0 0 .4em; line-height:1.18; }
+h2 { font-size:19px; border-bottom:2px solid #C2913B; padding-bottom:6px; margin-top:4px; }
+h3 { font-size:14px; color:#173A5E; }
+p { margin:0 0 .7em; }
+ul { margin:.2em 0 .6em; padding-left:18px; }
+li { margin-bottom:3px; }
+b { color:#0F2742; }
+.chip { display:inline-block; font-family:'Poppins'; font-weight:600; font-size:9.5px;
+  padding:2px 8px; border-radius:20px; line-height:1.3; white-space:nowrap; }
+.matrix { width:100%; border-collapse:collapse; font-size:10px; }
+.matrix th { background:#0F2742; color:#fff; font-family:'Poppins'; font-weight:600;
+  text-align:left; padding:7px 6px; font-size:10px; }
+.matrix td { padding:6px; border-bottom:1px solid #e3e7ec; vertical-align:top; }
+.matrix tr:nth-child(even) td { background:#F4F6F9; }
+.matrix .mname { font-family:'Poppins'; font-weight:600; color:#0F2742; width:21%; }
+.matrix .wcell { white-space:nowrap; width:9%; }
+.matrix .note { color:#41536b; font-size:9.5px; width:27%; }
+.matrix tr { break-inside:avoid; }
+.legend { background:#F4F6F9; border:1px solid #dfe4ea; border-radius:10px;
+  padding:9px 12px; margin:8px 0 12px; break-inside:avoid; }
+.legrow { display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin:3px 0;
+  font-size:10px; }
+.legrow b { font-family:'Poppins'; color:#173A5E; font-size:10px; }
+.lg { display:inline-flex; align-items:center; gap:5px; }
+.cards3,.cards2 { display:flex; flex-wrap:wrap; gap:10px; }
+.cards3 .card { flex:1 1 30%; }
+.cards2 .card { flex:1 1 45%; }
+.card { background:#F4F6F9; border:1px solid #dfe4ea; border-left:4px solid #C2913B;
+  border-radius:9px; padding:10px 12px; break-inside:avoid; }
+.card h3 { display:flex; align-items:center; gap:6px; margin-bottom:5px; }
+.card ul { font-size:11px; }
+.cal { width:100%; border-collapse:collapse; font-size:11px; margin-bottom:8px; }
+.cal td { padding:7px 6px; border-bottom:1px solid #e3e7ec; vertical-align:top; }
+.cal .cper { font-family:'Poppins'; font-weight:600; color:#0F2742; width:22%; }
+.cal .note { color:#41536b; }
+.cal tr { break-inside:avoid; }
+.tips li { font-size:11px; }
+.itin { background:#F4F6F9; border:1px solid #dfe4ea; border-radius:9px; padding:10px 12px;
+  break-inside:avoid; border-top:4px solid #173A5E; }
+.itin h3 { color:#0F2742; }
+.itin .ibest { font-size:10px; color:#C2913B; font-family:'Poppins'; font-weight:600;
+  margin-bottom:4px; }
+.itin ul { font-size:11px; list-style:none; padding-left:0; }
+.itin li { padding-left:0; border-bottom:1px dotted #d5dbe2; padding-bottom:3px; }
+.panel { border-radius:12px; padding:14px 16px; margin:12px 0; break-inside:avoid; }
+.panel.sponsor { background:#F4F6F9; border:1px solid #dde3ea; border-left:5px solid #C2913B;
+  position:relative; }
+.panel.sponsor h3 { color:#0F2742; font-size:15px; }
+.panel.sponsor p { font-size:11px; color:#33455c; margin:0; }
+.panel-shield { position:absolute; top:12px; right:14px; }
+.panel.cta { display:flex; gap:16px; align-items:center; color:#fff; }
+.panel.concierge { background:linear-gradient(120deg,#0F2742,#173A5E); }
+.panel.discover { background:linear-gradient(120deg,#173A5E,#0F2742); border:2px solid #C2913B; }
+.panel.cta h3 { color:#fff; font-size:15px; }
+.panel.cta p { color:#dfe7f1; font-size:11px; margin:0; }
+.cta-body { flex:1; }
+.qrwrap { text-align:center; flex:0 0 auto; }
+.qr { width:108px; height:108px; background:#fff; padding:6px; border-radius:8px; display:block; }
+.qrcap { color:#cdd8e6; font-size:8.5px; margin-top:5px; max-width:118px; }
+
+    body { background:#fff; max-width:760px; margin:0 auto; padding:0 16px 90px; }
+    h2 { font-size:22px; margin-top:26px; }
+    .hero { background:linear-gradient(150deg,#0F2742,#173A5E); color:#fff; border-radius:0 0 22px 22px;
+      margin:0 -16px 8px; padding:40px 24px 30px; text-align:center; }
+    .hero .sub { color:#C2913B; font-family:'Poppins'; font-weight:700; letter-spacing:2px; font-size:12px; }
+    .hero h1 { color:#fff; font-size:34px; margin:10px 0 8px; }
+    .hero p { color:#dfe7f1; font-size:15px; margin:0 auto; max-width:420px; }
+    .hero .badge { display:inline-flex; align-items:center; gap:8px; margin-top:16px;
+      background:rgba(255,255,255,.1); border:1px solid rgba(194,145,59,.6); border-radius:30px;
+      padding:7px 14px; font-family:'Poppins'; font-weight:600; font-size:12px; }
+    .mcard { background:#F4F6F9; border:1px solid #e0e5eb; border-left:4px solid #C2913B;
+      border-radius:12px; padding:13px 15px; margin-bottom:10px; }
+    .mtop { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .mtitle { font-family:'Poppins'; font-weight:600; color:#0F2742; font-size:15px; }
+    .mmeta { display:flex; flex-wrap:wrap; gap:6px 14px; font-size:12px; color:#173A5E;
+      margin:7px 0; align-items:center; }
+    .mnote { font-size:12.5px; color:#41536b; }
+    .cards3,.cards2 { flex-direction:column; }
+    .card,.itin { flex:1 1 100%; }
+    .card ul,.itin ul,.tips li,.gems li { font-size:14px; }
+    .cal { font-size:13px; }
+    .btn { display:block; text-align:center; background:#fff; color:#0F2742; font-family:'Poppins';
+      font-weight:700; font-size:16px; text-decoration:none; padding:15px; border-radius:12px;
+      margin-top:12px; }
+    .btn.gold { background:#C2913B; color:#fff; }
+    .panel.cta { flex-direction:column; align-items:stretch; text-align:left; padding:20px; }
+    .panel.cta h3 { font-size:19px; }
+    .panel.cta p { font-size:14px; }
+    .panel.sponsor h3 { font-size:18px; }
+    .panel.sponsor p { font-size:13.5px; }
+    .legend { font-size:12px; }
+    .legrow { font-size:12px; }
+    .sticky { position:fixed; left:0; right:0; bottom:0; z-index:50; padding:10px 16px;
+      background:linear-gradient(0deg,#fff 70%,rgba(255,255,255,0)); }
+    .sticky a { display:block; max-width:728px; margin:0 auto; text-align:center;
+      background:linear-gradient(120deg,#0F2742,#173A5E); color:#fff; font-family:'Poppins';
+      font-weight:700; font-size:16px; text-decoration:none; padding:15px; border-radius:14px;
+      box-shadow:0 6px 20px rgba(15,39,66,.35); }
+    .wfoot { text-align:center; color:#173A5E; font-size:12px; margin:30px 0 0; padding-top:14px;
+      border-top:1px solid #e3e7ec; }
+    @media(min-width:620px) {
+      .cards3,.cards2 { flex-direction:row; }
+      .cards3 .card { flex:1 1 30%; } .cards2 .card,.cards2 .itin { flex:1 1 45%; }
+    }
+    </style></head><body>
+    <div class="hero"><div class="sub">A LOCAL'S GUIDE &middot; GIFTED BY YOUR HOST</div>
+      <h1>Cape Town, Sorted</h1>
+      <p>The Mother City made easy - where to go, when to go, and how to skip the queues. Yours to keep.</p>
+      <div class="badge"><svg width="30" height="30" viewBox="0 0 120 120"><path d="M60 6 L106 24 V60 C106 89 86 108 60 116 C34 108 14 89 14 60 V24 Z" fill="#fff" stroke="#C2913B" stroke-width="4"/><path d="M40 60 L54 75 L83 42" fill="none" stroke="#C2913B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Compiled with care by AssetProof</span></div></div>
+    
+<h2>Welcome to the Mother City</h2>
+<p>Cape Town rewards travellers who read the day right. In summer the
+<b>"Cape Doctor"</b> - a brisk south-easter - can sweep in and reshape your plans;
+it clears the air but makes exposed beaches and high hikes hard work. When you see
+cloud pouring over the top of <b>Table Mountain</b> like a <b>"tablecloth"</b>, that's
+the south-easter at play: the cableway often closes, so pivot to a sheltered plan.</p>
+<p>The golden rule: <b>chase the calm, beat the heat, dodge the queues.</b> Mornings
+are usually stillest and coolest; light winds and clear skies are your green light for
+the mountain, the Cape and the open beaches. This little guide is yours to keep -
+gifted by your host, compiled with care by your hosting team.</p>
+
+    <div class="panel sponsor"><div class="panel-shield"><svg width="30" height="30" viewBox="0 0 120 120"><path d="M60 6 L106 24 V60 C106 89 86 108 60 116 C34 108 14 89 14 60 V24 Z" fill="#0F2742"/><path d="M40 60 L54 75 L83 42" fill="none" stroke="#C2913B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Why is AssetProof on your guide?</h3><p>We're the quiet team behind a great stay. Before you arrived, we documented this home end to end - a short visual tour let us inventory the contents, assess the condition, flag anything to put right, and build the checklists that keep it guest-perfect - and we give the owner the reports that keep their finger on the pulse, all for your comfort. We know this home, and we know this city - so we put both to work to hand you these tour ideas, local tips and time-savers. This guide is just a taste of what we do. Enjoy Cape Town - you're in good hands.</p></div>
+    <h2>The Cape Town Matrix</h2>
+    <p style="font-size:13px;">20 things to do - colour-coded by interest, tagged for weather,
+    season, effort and time, with the best-time / pre-book trick. A gold <svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> marks the unmissable.</p>
+    <div class="legend"><div class="legrow"><b>Weather</b><span class="lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> Sunny</span><span class="lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M6 13a4 4 0 0 1 .7-7.95 5.5 5.5 0 0 1 10.6 1.45A3.5 3.5 0 0 1 17 13H6z"/><path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"/></svg> Rain-friendly</span><span class="lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg> Wind-OK</span><span class="lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Unmissable</span></div><div class="legrow"><b>Interest</b><span class="lg"><span class="chip" style="background:#2E7D5B;color:#fff">Nature</span></span><span class="lg"><span class="chip" style="background:#7A4FA0;color:#fff">Culture</span></span><span class="lg"><span class="chip" style="background:#B5532E;color:#fff">Food & Wine</span></span><span class="lg"><span class="chip" style="background:#1F7AA6;color:#fff">Beach</span></span><span class="lg"><span class="chip" style="background:#C99700;color:#fff">Family</span></span><span class="lg"><span class="chip" style="background:#B23A6E;color:#fff">Romance</span></span></div></div>
+    <div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Table Mountain Cableway</span><span class="chip" style="background:#2E7D5B;color:#fff">Nature</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>2-3 hrs</span></div><div class="mnote">PRE-BOOK online. First car (08:00) or last light. Closes in high wind.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Lion's Head sunrise/sunset hike</span><span class="chip" style="background:#2E7D5B;color:#fff">Nature</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Year-round</span><span>Effort: Med-High</span><span>2-3 hrs</span></div><div class="mnote">Go for sunrise or full-moon nights. Skip in strong wind/rain.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Cape Point & Cape of Good Hope</span><span class="chip" style="background:#2E7D5B;color:#fff">Nature</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg></span><span>Year-round</span><span>Effort: Med</span><span>Half day</span></div><div class="mnote">Pre-book park entry online. Early start beats coach tours.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Boulders Beach penguins</span><span class="chip" style="background:#C99700;color:#fff">Family</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>1-2 hrs</span></div><div class="mnote">Open from 08:00 - arrive first. Boardwalk works even when breezy.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> V&A Waterfront</span><span class="chip" style="background:#C99700;color:#fff">Family</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M6 13a4 4 0 0 1 .7-7.95 5.5 5.5 0 0 1 10.6 1.45A3.5 3.5 0 0 1 17 13H6z"/><path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>2-4 hrs</span></div><div class="mnote">Check if a cruise ship is in (busiest). Weekday mornings calmer.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Robben Island ferry & tour</span><span class="chip" style="background:#7A4FA0;color:#fff">Culture</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>Half day</span></div><div class="mnote">PRE-BOOK well ahead. Ferries cancel in big swell/wind - go calm days.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Kirstenbosch Botanical Garden</span><span class="chip" style="background:#2E7D5B;color:#fff">Nature</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Spr-Sum</span><span>Effort: Low</span><span>2-3 hrs</span></div><div class="mnote">Spring blooms (Sep-Oct). Tree Canopy 'Boomslang' walkway is a must.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Constantia wine route</span><span class="chip" style="background:#B5532E;color:#fff">Food & Wine</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M6 13a4 4 0 0 1 .7-7.95 5.5 5.5 0 0 1 10.6 1.45A3.5 3.5 0 0 1 17 13H6z"/><path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>Half day</span></div><div class="mnote">Nearest vineyards to the city. Book a tasting; use Uber, don't drive.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> Bo-Kaap walk & Cape Malay food</span><span class="chip" style="background:#7A4FA0;color:#fff">Culture</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M6 13a4 4 0 0 1 .7-7.95 5.5 5.5 0 0 1 10.6 1.45A3.5 3.5 0 0 1 17 13H6z"/><path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>1-2 hrs</span></div><div class="mnote">Respect homes when photographing. Pair with a cooking class indoors.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Chapman's Peak Drive</span><span class="chip" style="background:#B23A6E;color:#fff">Romance</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>1-2 hrs</span></div><div class="mnote">Toll road; may close in rockfall/wind. Sunset drive is unbeatable.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> Camps Bay beach & strip</span><span class="chip" style="background:#1F7AA6;color:#fff">Beach</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Summer</span><span>Effort: Low</span><span>2-4 hrs</span></div><div class="mnote">First-light or late afternoon beats the midday crowd & heat.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> Muizenberg surf & beach huts</span><span class="chip" style="background:#C99700;color:#fff">Family</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>2-3 hrs</span></div><div class="mnote">Warmer False Bay water. Great beginner surf; lessons bookable.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> Two Oceans Aquarium</span><span class="chip" style="background:#C99700;color:#fff">Family</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M6 13a4 4 0 0 1 .7-7.95 5.5 5.5 0 0 1 10.6 1.45A3.5 3.5 0 0 1 17 13H6z"/><path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>2-3 hrs</span></div><div class="mnote">Top rainy-day pick at the V&A. Pre-book to skip the queue.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> Zeitz MOCAA art museum</span><span class="chip" style="background:#7A4FA0;color:#fff">Culture</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M6 13a4 4 0 0 1 .7-7.95 5.5 5.5 0 0 1 10.6 1.45A3.5 3.5 0 0 1 17 13H6z"/><path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>2 hrs</span></div><div class="mnote">Stunning silo architecture. Ideal windy/rainy plan-B.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> Company's Garden & museums</span><span class="chip" style="background:#7A4FA0;color:#fff">Culture</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M6 13a4 4 0 0 1 .7-7.95 5.5 5.5 0 0 1 10.6 1.45A3.5 3.5 0 0 1 17 13H6z"/><path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>2-3 hrs</span></div><div class="mnote">City-centre green lung; cluster of museums for wet days.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> Hout Bay & Seal Island cruise</span><span class="chip" style="background:#C99700;color:#fff">Family</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>1-2 hrs</span></div><div class="mnote">Short harbour cruise; can be choppy in wind. Morning calmer.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Stellenbosch / Franschhoek wine day</span><span class="chip" style="background:#B5532E;color:#fff">Food & Wine</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>Full day</span></div><div class="mnote">Use the wine tram or a driver. Book lunch + tastings ahead.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Signal Hill sundowners</span><span class="chip" style="background:#B23A6E;color:#fff">Romance</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>1 hr</span></div><div class="mnote">Drive up for sunset. Noon Gun fires Mon-Sat at 12:00.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"> Sea Point Promenade stroll</span><span class="chip" style="background:#C99700;color:#fff">Family</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg></span><span>Year-round</span><span>Effort: Low</span><span>1 hr</span></div><div class="mnote">Flat, easy, ocean-side. Good even on breezy days; cafes en route.</div></div><div class="mcard"><div class="mtop"><span class="mtitle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C2913B"><path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 20.2l1.2-6.6L2.5 9l6.6-.9z"/></svg> Whale watching, Hermanus</span><span class="chip" style="background:#2E7D5B;color:#fff">Nature</span></div><div class="mmeta"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg></span><span>Win-Spr</span><span>Effort: Low</span><span>Full day</span></div><div class="mnote">Jun-Nov is peak Southern Right season. Land-based viewing is free.</div></div>
+    
+<h2>Whatever the weather</h2>
+<div class="cards3">
+  <div class="card"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M6 13a4 4 0 0 1 .7-7.95 5.5 5.5 0 0 1 10.6 1.45A3.5 3.5 0 0 1 17 13H6z"/><path d="M8 17l-1 2M12 17l-1 2M16 17l-1 2"/></svg> Rainy-day winners</h3>
+    <ul><li>Two Oceans Aquarium & Zeitz MOCAA at the V&A</li>
+    <li>Company's Garden museums &amp; the Castle of Good Hope</li>
+    <li>A Cape Malay cooking class in the Bo-Kaap</li>
+    <li>Constantia cellar tastings (indoors, fireside in winter)</li></ul></div>
+  <div class="card"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h14a2.5 2.5 0 1 1-2.5 2.5M3 16h8a2 2 0 1 1-2 2"/></svg> Windy plan-B</h3>
+    <ul><li>Swap the high mountain for sheltered <b>False Bay</b> (Muizenberg, Boulders)</li>
+    <li>Head inland to the <b>Winelands</b> - valleys are calmer</li>
+    <li>Sea Point Promenade &amp; harbour cafes stay enjoyable</li>
+    <li>Save Cape Point &amp; Robben Island for a calmer day</li></ul></div>
+  <div class="card"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2913B" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg> Read the tablecloth</h3>
+    <p>Cloud cascading over Table Mountain = strong south-easter. The cableway and
+    Lion's Head get rough and may close. If the "tablecloth" is out, go low and
+    sheltered today and save the summit for a clear, still morning.</p></div>
+</div>
+
+    <h2>Beat the crowds, queues &amp; peak prices</h2>
+    <table class="cal"><tbody><tr><td class="cper">Dec - mid Jan</td><td><span class="chip" style="background:#B23A6E;color:#fff">PEAK</span></td><td class="note">Festive season &amp; local school holidays. Busiest and priciest - book everything well ahead.</td></tr><tr><td class="cper">Feb - Apr</td><td><span class="chip" style="background:#C2913B;color:#fff">SWEET SPOT</span></td><td class="note">Warm, calmer wind, thinner crowds, better value. The connoisseur's window.</td></tr><tr><td class="cper">May - Aug</td><td><span class="chip" style="background:#173A5E;color:#fff">QUIET</span></td><td class="note">Winter: cooler, wetter, greenest, cheapest. Whales arrive; cosy cellar season.</td></tr><tr><td class="cper">Sep - Nov</td><td><span class="chip" style="background:#C2913B;color:#fff">SWEET SPOT</span></td><td class="note">Spring flowers, whales offshore, rising sun, shoulder pricing.</td></tr></tbody></table>
+    <h3 style="margin-top:8px;">How to dodge the crush</h3>
+<ul class="tips">
+  <li><b>Table Mountain:</b> pre-book the cableway online and take the first car (08:00) or the last light slot - midday queues are longest.</li>
+  <li><b>Go weekday, go early or late:</b> attractions are calmest at opening and in the late afternoon.</li>
+  <li><b>V&amp;A Waterfront:</b> check whether a cruise ship is in port before you go - that's the difference between a stroll and a scrum.</li>
+  <li><b>Beat the traffic:</b> avoid the N1/N2 at rush hour (approx 07:00-09:00 &amp; 16:00-18:00).</li>
+  <li><b>Beaches:</b> first-light or sunset beats midday for light, space and parking.</li>
+  <li><b>Eat early or late:</b> book the 18:00 or the 21:00 table to skip the peak-hour wait.</li>
+  <li><b>Cape Point &amp; Robben Island:</b> pre-book entry/ferries; sail on calm days as wind cancels crossings.</li>
+</ul>
+
+    <h2>Ready-made days</h2><div class="cards2"><div class="itin"><h3>The Classic City Day</h3><div class="ibest">Best for: Sun, low wind</div><ul><li>08:00 - First cableway car up Table Mountain</li><li>10:30 - Bo-Kaap walk + Cape Malay bite</li><li>13:00 - Lunch & stroll at the V&A Waterfront</li><li>16:00 - Sundowners on Signal Hill</li></ul></div><div class="itin"><h3>The Cape Peninsula Loop</h3><div class="ibest">Best for: Sun, calm</div><ul><li>08:00 - Chapman's Peak Drive (top down)</li><li>10:00 - Boulders Beach penguins</li><li>12:00 - Cape Point & Cape of Good Hope</li><li>16:00 - Seafood late lunch in Hout Bay</li></ul></div><div class="itin"><h3>Wine & Mountains</h3><div class="ibest">Best for: Any (great in light rain)</div><ul><li>09:30 - Constantia tasting (or the wine tram in Stellenbosch)</li><li>12:30 - Long vineyard lunch</li><li>15:00 - Kirstenbosch garden & Boomslang walkway</li><li>17:30 - Easy Sea Point Promenade stroll</li></ul></div><div class="itin"><h3>Rainy-Day Culture</h3><div class="ibest">Best for: Rain or strong wind</div><ul><li>09:30 - Two Oceans Aquarium</li><li>11:30 - Zeitz MOCAA contemporary art</li><li>13:30 - Company's Garden museums</li><li>16:00 - Cooking class or cellar tasting</li></ul></div><div class="itin"><h3>Slow & Romantic</h3><div class="ibest">Best for: Calm evening</div><ul><li>16:00 - Camps Bay late-afternoon beach</li><li>18:00 - Chapman's Peak sunset drive</li><li>19:30 - Quiet dinner (book early or late)</li><li>21:30 - Stargaze from Signal Hill</li></ul></div></div>
+    <h2>Guest essentials</h2>
+<div class="cards2">
+  <div class="card"><h3>Getting around</h3>
+   <ul><li><b>Uber &amp; Bolt</b> are cheap, plentiful and the easiest way around.</li>
+   <li><b>MyCiTi</b> buses cover the city, Waterfront, Camps Bay &amp; the airport.</li>
+   <li>Driving is on the <b>left</b>; distances are bigger than they look.</li></ul></div>
+  <div class="card"><h3>Money &amp; tipping</h3>
+   <ul><li>Tip <b>~10-15%</b> in restaurants; a little for car guards &amp; porters.</li>
+   <li>Cards are widely accepted; carry some cash for markets.</li></ul></div>
+  <div class="card"><h3>Stay safe &amp; well</h3>
+   <ul><li>Keep valuables out of sight; use ride apps after dark.</li>
+   <li>The African sun is fierce - <b>sunscreen, hat, water</b>, even when breezy.</li>
+   <li>Tap water is safe to drink across the city.</li></ul></div>
+  <div class="card"><h3>Practical bits</h3>
+   <ul><li><b>Emergencies:</b> 112 from any mobile, or 10111 (police).</li>
+   <li><b>SIM/data:</b> grab a local prepaid SIM at the airport or a mall.</li>
+   <li><b>Plugs:</b> Type M / N, 230V - bring an adapter.</li></ul></div>
+</div>
+
+    <h2>Hidden gems</h2>
+<ul class="gems">
+ <li><b>Sunrise at Lion's Head</b> - beat the crowds and the heat for a 360-degree glow.</li>
+ <li><b>Oranjezicht City Farm Market</b> (weekends) - local produce by the sea.</li>
+ <li><b>Llandudno sundown</b> - a quieter, dramatic alternative to Camps Bay.</li>
+ <li><b>Scarborough &amp; Misty Cliffs</b> - wild, uncrowded coastline past Kommetjie.</li>
+ <li><b>The Foreshore &amp; CBD street art</b> - a self-guided wander between cafes.</li>
+ <li><b>Newlands Forest walk</b> - shady, sheltered greenery when the wind blows.</li>
+</ul>
+
+    <div class="panel cta concierge"><div class="cta-body"><h3>Here now and stuck? Ask your Cape Town concierge.</h3><p>Tell it today's weather, your tastes and your energy, and get a plan made just for you. Want it to remember you and keep your guide handy? Add your WhatsApp and it'll tailor everything - and send your guide to keep.</p><a class="btn" href="https://asset-proof-concierge.replit.app/">Open your Cape Town concierge &rarr;</a></div></div>
+    <div class="panel cta discover"><div class="cta-body"><h3>Loved this? Here's what AssetProof can do for YOU back home.</h3><p>From a single walkthrough we document, value and market your own property - get the same treatment for your home, your rental or your sale. One visit, reports that keep your finger on the pulse, and a listing that sells.</p><a class="btn gold" href="https://assetproofsolutions.com/discover">See what AssetProof can do for you &rarr;</a></div></div>
+    <div class="wfoot">www.AssetProofSolutions.com &middot; Team@WirelessAlert.co.za</div>
+    <div class="sticky"><a href="https://asset-proof-concierge.replit.app/">Ask your Cape Town concierge &rarr;</a></div>
+    </body></html>
