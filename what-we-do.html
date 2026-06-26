@@ -4,21 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AssetProof — What We Do</title>
-<!--
-  AssetProof — What We Do (interactive radial hub-and-spoke).
-  Self-contained: inline CSS/JS/SVG, no external CSS/JS/font/image/CDN. The only
-  external URLs are assetproofsolutions.com hrefs (target=_blank rel=noopener).
-
-  EMBED FLAG — HOMEPAGE vs EMAIL
-  ------------------------------------------------------------------
-  The widget can open EXPANDED (full radial, default for the emailed leave-behind)
-  or COLLAPSED (a compact bar, useful as a quiet homepage centrepiece that the
-  visitor expands on demand).
-  To start COLLAPSED, add  data-start="collapsed"  to the .ap-wrap element below
-  (e.g. <div class="ap-wrap" data-start="collapsed">). Omit it (or use
-  data-start="expanded") to start fully expanded.
-  ------------------------------------------------------------------
--->
 <style>
   :root{
     --navy:#0F2742;
@@ -36,164 +21,123 @@
     font-family:var(--body);
     color:var(--ink);
     background:var(--bg);
-    background-image:radial-gradient(circle at 50% 22%, #ffffff 0%, var(--bg) 62%);
-    padding:clamp(14px,2.4vw,30px);
+    background-image:radial-gradient(circle at 50% 0%, #ffffff 0%, var(--bg) 60%);
+    padding:clamp(16px,3vw,40px);
     border-radius:18px;
-    max-width:1180px;
+    max-width:1400px;
     margin:0 auto;
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
   .ap-wrap *{font-family:inherit}
 
-  /* ============ MASTER BAR (collapse/expand) ============ */
-  .ap-bar{
-    display:flex;align-items:center;gap:12px;
-    background:var(--navy);color:#fff;
-    border:1px solid rgba(194,145,59,.4);
-    border-radius:14px;
-    padding:13px 18px;
-    cursor:pointer;
-    box-shadow:0 8px 22px rgba(15,39,66,.18);
-    transition:box-shadow .3s ease, transform .2s ease;
-    width:100%;text-align:left;
-    font-family:var(--heading);
-  }
-  .ap-bar:hover{box-shadow:0 12px 30px rgba(15,39,66,.26)}
-  .ap-bar:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(194,145,59,.6),0 12px 30px rgba(15,39,66,.26)}
-  .ap-bar-logo{width:30px;height:30px;flex:0 0 auto}
-  .ap-bar-logo svg{width:100%;height:100%;display:block}
-  .ap-bar-text{flex:1 1 auto;min-width:0}
-  .ap-bar-title{font-weight:600;font-size:clamp(15px,2vw,18px);letter-spacing:.2px;line-height:1.2}
-  .ap-bar-sub{font-size:12px;color:var(--gold);font-weight:600;margin-top:2px;letter-spacing:.3px}
-  .ap-bar-chev{
-    flex:0 0 auto;width:22px;height:22px;color:var(--gold);
-    transition:transform .4s cubic-bezier(.4,0,.2,1);
-  }
-  .ap-wrap.collapsed .ap-bar-chev{transform:rotate(-90deg)}
-
-  /* ============ STAGE (the collapsible body) ============ */
-  .ap-stage{
-    overflow:hidden;
-    transition:max-height .55s cubic-bezier(.4,0,.2,1), opacity .4s ease, margin-top .4s ease;
-    max-height:4200px;
-    opacity:1;
-    margin-top:clamp(14px,2.2vw,22px);
-  }
-  .ap-wrap.collapsed .ap-stage{
-    max-height:0;
-    opacity:0;
-    margin-top:0;
-  }
-
-  /* ============ RADIAL CANVAS ============ */
-  .ap-radial{
-    position:relative;
+  /* Header */
+  .ap-header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;text-align:center}
+  .ap-logo{width:46px;height:46px;flex:0 0 auto}
+  .ap-logo svg{width:100%;height:100%;display:block}
+  .ap-wordmark{font-family:var(--heading);font-weight:700;font-size:clamp(22px,3vw,30px);letter-spacing:.3px}
+  .ap-wordmark .a{color:var(--navy)}
+  .ap-wordmark .p{color:var(--gold)}
+  .ap-umbrella{
     width:100%;
-    margin:0 auto;
-  }
-  /* wide (true radial) sizing */
-  @media(min-width:720px){
-    .ap-radial{height:700px;max-width:1080px}
-  }
-  @media(min-width:1000px){
-    .ap-radial{height:800px}
+    text-align:center;
+    color:var(--slate);
+    font-size:clamp(14px,1.7vw,17px);
+    margin-top:6px;
   }
 
-  .ap-spokes{
+  /* Organogram */
+  .ap-organogram{
+    position:relative;
+    margin:clamp(24px,4vw,44px) auto 0;
+  }
+  .ap-connectors{
     position:absolute;inset:0;width:100%;height:100%;
-    pointer-events:none;z-index:1;
+    pointer-events:none;z-index:0;
     display:none;
   }
-  .ap-spokes path{
-    fill:none;
-    stroke:var(--gold);
-    stroke-width:1.4;
-    stroke-opacity:.55;
-    transition:stroke-width .35s ease, stroke-opacity .35s ease;
+  .ap-connectors line{
+    stroke:var(--line);stroke-width:2;
+    transition:stroke .35s ease, stroke-width .35s ease;
   }
-  .ap-spokes path.lit{stroke-width:3;stroke-opacity:1}
-  .ap-radial.has-active .ap-spokes path:not(.lit){stroke-opacity:.18}
+  .ap-connectors line.lit{stroke:var(--gold);stroke-width:3.5}
 
-  /* ---- Centre hub ---- */
+  /* Hub */
   .ap-hub{
-    z-index:3;
+    position:relative;z-index:2;
+    margin:0 auto clamp(20px,3vw,30px);
+    max-width:360px;
     text-align:center;
     background:var(--navy);
     color:#fff;
-    border:1px solid rgba(194,145,59,.45);
-    box-shadow:0 18px 44px rgba(15,39,66,.34), inset 0 0 0 6px rgba(255,255,255,.02);
+    border-radius:18px;
+    padding:22px 24px;
+    box-shadow:0 14px 34px rgba(15,39,66,.28);
+    border:1px solid rgba(194,145,59,.35);
   }
-  @media(min-width:720px){
-    .ap-hub{
-      position:absolute;
-      left:50%;top:50%;
-      transform:translate(-50%,-50%);
-      width:236px;height:236px;
-      border-radius:50%;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      padding:24px;
-    }
+  .ap-hub .k{
+    text-transform:uppercase;letter-spacing:2px;font-size:11px;
+    color:var(--gold);font-weight:700;margin-bottom:8px;font-family:var(--heading);
   }
-  .ap-hub-logo{width:50px;height:50px;margin:0 auto 8px}
-  .ap-hub-logo svg{width:100%;height:100%;display:block}
-  .ap-hub-mark{font-family:var(--heading);font-weight:700;font-size:24px;letter-spacing:.3px;line-height:1}
-  .ap-hub-mark .a{color:#fff}
-  .ap-hub-mark .p{color:var(--gold)}
-  .ap-hub-umbrella{
-    color:rgba(255,255,255,.82);
-    font-size:12.5px;margin-top:8px;line-height:1.35;max-width:180px;
+  .ap-hub h2{
+    font-family:var(--heading);font-weight:600;
+    font-size:clamp(17px,2.2vw,21px);margin:0;line-height:1.3;
   }
 
-  /* ---- Need nodes ---- */
-  .ap-node{
-    z-index:2;
+  /* Branch grid */
+  .ap-branches{
+    position:relative;z-index:2;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  @media(min-width:620px){.ap-branches{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:980px){.ap-branches{grid-template-columns:repeat(3,1fr)}}
+
+  .ap-branch{
+    position:relative;z-index:2;
     background:var(--white);
     border:1px solid var(--line);
-    border-radius:14px;
-    padding:13px 14px;
+    border-radius:16px;
+    padding:18px 18px 16px;
     cursor:pointer;
-    text-align:left;
-    box-shadow:0 6px 18px rgba(15,39,66,.08);
-    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease, opacity .3s ease;
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease, opacity .35s ease;
+    box-shadow:0 4px 14px rgba(15,39,66,.06);
     outline:none;
   }
-  @media(min-width:720px){
-    .ap-node{
-      position:absolute;
-      width:206px;
-      transform:translate(-50%,-50%);
-    }
-    .ap-node:hover,.ap-node.open{transform:translate(-50%,-50%) scale(1.04)}
-  }
-  .ap-node:focus-visible{box-shadow:0 0 0 3px rgba(194,145,59,.55),0 10px 24px rgba(15,39,66,.16)}
-  .ap-node:hover,.ap-node.open{
+  .ap-branch:focus-visible{box-shadow:0 0 0 3px rgba(194,145,59,.55),0 8px 22px rgba(15,39,66,.12)}
+  .ap-branch:hover,.ap-branch.open{
     border-color:var(--gold);
-    box-shadow:0 18px 40px rgba(15,39,66,.18);
+    box-shadow:0 16px 38px rgba(15,39,66,.16);
+    transform:translateY(-3px);
   }
-  .ap-radial.has-active .ap-node:not(.open):not(:hover):not(:focus-within){opacity:.42}
+  /* dim siblings when one is active */
+  .ap-branches.has-active .ap-branch:not(.open):not(:hover):not(:focus-within){
+    opacity:.5;
+  }
 
-  .ap-node-head{display:flex;align-items:flex-start;gap:10px}
-  .ap-node-icon{
-    flex:0 0 auto;width:38px;height:38px;border-radius:10px;
+  .ap-branch-head{display:flex;align-items:flex-start;gap:12px}
+  .ap-icon{
+    flex:0 0 auto;width:42px;height:42px;border-radius:11px;
     background:var(--bg);display:flex;align-items:center;justify-content:center;
-    border:1px solid var(--line);transition:background .3s ease,border-color .3s ease;
+    border:1px solid var(--line);transition:background .35s ease,border-color .35s ease;
   }
-  .ap-node:hover .ap-node-icon,.ap-node.open .ap-node-icon{background:#fbf4e6;border-color:var(--gold)}
-  .ap-node-icon svg{width:22px;height:22px;display:block}
-  .ap-node-titles{flex:1 1 auto;min-width:0}
-  .ap-for{display:block;font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--gold);font-weight:700;font-family:var(--heading)}
-  .ap-node h3{
-    font-family:var(--heading);font-weight:600;font-size:14.5px;margin:1px 0 2px;color:var(--navy);
-    line-height:1.25;
+  .ap-branch:hover .ap-icon,.ap-branch.open .ap-icon{background:#fbf4e6;border-color:var(--gold)}
+  .ap-icon svg{width:24px;height:24px;display:block}
+  .ap-branch-titles{flex:1 1 auto;min-width:0}
+  .ap-branch h3{
+    font-family:var(--heading);font-weight:600;font-size:16px;margin:1px 0 2px;color:var(--navy);
+    display:flex;align-items:center;gap:8px;justify-content:space-between;
   }
-  .ap-teaser{font-size:12.5px;color:var(--slate);margin:3px 0 0;line-height:1.35}
-  .ap-node-chev{
-    flex:0 0 auto;width:15px;height:15px;color:var(--slate);transition:transform .3s ease;margin-top:2px;
+  .ap-for{display:block;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--gold);font-weight:700;font-family:var(--heading)}
+  .ap-teaser{font-size:13.5px;color:var(--slate);margin:6px 0 0}
+  .ap-chev{
+    flex:0 0 auto;color:var(--slate);transition:transform .35s ease;
+    width:18px;height:18px;
   }
-  .ap-node.open .ap-node-chev{transform:rotate(180deg);color:var(--gold)}
+  .ap-branch.open .ap-chev{transform:rotate(180deg);color:var(--gold)}
 
-  /* ---- Flyout / outputs panel ---- */
+  /* Explode panel */
   .ap-outputs{
     overflow:hidden;
     max-height:0;
@@ -201,67 +145,40 @@
     transition:max-height .45s ease, opacity .35s ease, margin-top .35s ease;
     margin-top:0;
   }
-  .ap-node.open .ap-outputs{
-    max-height:720px;opacity:1;margin-top:11px;
+  .ap-branch.open .ap-outputs,
+  .ap-branch:hover .ap-outputs{
+    max-height:640px;
+    opacity:1;
+    margin-top:14px;
   }
-  /* desktop: float the panel so the ring stays tidy */
-  @media(min-width:720px){
-    .ap-node.open{z-index:6}
-    .ap-node.open .ap-outputs{
-      position:absolute;left:0;right:0;top:100%;
-      background:#fff;border:1px solid var(--gold);
-      border-radius:12px;
-      box-shadow:0 22px 48px rgba(15,39,66,.22);
-      padding:0 13px;margin-top:8px;
-    }
-    /* nodes on the lower half open their panel upward */
-    .ap-node.flip-up.open .ap-outputs{top:auto;bottom:100%;margin-top:0;margin-bottom:8px}
-  }
-  .ap-outputs ul{list-style:none;margin:0;padding:11px 0 6px;border-top:1px dashed var(--line)}
-  @media(min-width:720px){
-    .ap-node.open .ap-outputs ul{border-top:none;padding-top:12px}
-  }
+  .ap-outputs ul{list-style:none;margin:0;padding:14px 0 4px;border-top:1px dashed var(--line)}
   .ap-out{
     display:block;text-decoration:none;color:inherit;
-    padding:8px 10px;border-radius:9px;margin-bottom:5px;
-    transition:background .2s ease, border-color .2s ease;
+    padding:9px 11px;border-radius:10px;margin-bottom:6px;
+    transition:background .2s ease;
     border:1px solid transparent;
   }
   .ap-out:hover,.ap-out:focus-visible{background:#fbf4e6;border-color:rgba(194,145,59,.4);outline:none}
   .ap-out .doc{
-    font-family:var(--heading);font-weight:600;font-size:13px;color:var(--navy);
-    display:flex;align-items:flex-start;gap:7px;
+    font-family:var(--heading);font-weight:600;font-size:13.5px;color:var(--navy);
+    display:flex;align-items:center;gap:7px;
   }
   .ap-out .doc .arr{color:var(--gold);font-weight:700;transition:transform .2s ease}
   .ap-out:hover .doc .arr,.ap-out:focus-visible .doc .arr{transform:translateX(3px)}
-  .ap-out .ben{font-size:12px;color:var(--slate);margin-top:2px;display:block}
+  .ap-out .ben{font-size:12.5px;color:var(--slate);margin-top:2px;display:block}
 
-  /* ============ NARROW (vertical accordion) ============ */
-  @media(max-width:719px){
-    .ap-hub{
-      max-width:420px;margin:0 auto 16px;border-radius:16px;
-      padding:20px 22px;text-align:center;
-    }
-    .ap-nodes-wrap{display:flex;flex-direction:column;gap:12px;max-width:560px;margin:0 auto}
-    .ap-node{width:100%}
-  }
-  /* on wide screens the wrapper is just a passthrough; nodes are absolutely placed */
-  @media(min-width:720px){
-    .ap-nodes-wrap{display:contents}
-  }
-
-  /* ============ Relationship note ============ */
+  /* Relationship note */
   .ap-relnote{
-    margin:clamp(18px,3vw,26px) auto 0;
+    margin:clamp(20px,3vw,28px) auto 0;
     max-width:760px;text-align:center;
     background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
     border-radius:12px;padding:13px 18px;color:var(--slate);font-size:13.5px;
   }
   .ap-relnote strong{color:var(--navy)}
 
-  /* ============ Footer ============ */
+  /* Footer */
   .ap-footer{
-    margin-top:clamp(20px,3vw,30px);
+    margin-top:clamp(22px,3vw,32px);
     padding-top:20px;border-top:1px solid var(--line);
     text-align:center;
   }
@@ -277,360 +194,289 @@
   .ap-btn.primary:hover{background:#d2a14a}
   .ap-btn.secondary{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
   .ap-btn.secondary:hover{background:var(--navy);color:#fff}
-
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important}
-  }
 </style>
 </head>
 <body>
-<!-- Add data-start="collapsed" to the line below to embed collapsed on the homepage. -->
-<div class="ap-wrap" data-start="expanded">
+<div class="ap-wrap">
 
-  <!-- MASTER COLLAPSE / EXPAND BAR -->
-  <button type="button" class="ap-bar" id="apBar" aria-expanded="true" aria-controls="apStage">
-    <span class="ap-bar-logo" aria-hidden="true">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M60 6 L106 24 V60 C106 89 86 108 60 116 C34 108 14 89 14 60 V24 Z" fill="#fff"/><path d="M40 60 L54 75 L83 42" fill="none" stroke="#C2913B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- HEADER -->
+  <header class="ap-header">
+    <span class="ap-logo" aria-hidden="true">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M60 6 L106 24 V60 C106 89 86 108 60 116 C34 108 14 89 14 60 V24 Z" fill="#0F2742"/><path d="M40 60 L54 75 L83 42" fill="none" stroke="#C2913B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </span>
-    <span class="ap-bar-text">
-      <span class="ap-bar-title">What we do for your property</span>
-      <span class="ap-bar-sub">One walkthrough. Every document.</span>
-    </span>
-    <svg class="ap-bar-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-  </button>
+    <span class="ap-wordmark"><span class="a">Asset</span><span class="p">Proof</span></span>
+    <p class="ap-umbrella">One short walkthrough — every document your property will ever need.</p>
+  </header>
 
-  <!-- COLLAPSIBLE STAGE -->
-  <div class="ap-stage" id="apStage">
-    <section class="ap-radial" id="apRadial" aria-label="What AssetProof does">
+  <!-- ORGANOGRAM -->
+  <section class="ap-organogram" aria-label="What AssetProof does">
+    <svg class="ap-connectors" id="apConnectors" aria-hidden="true" preserveAspectRatio="none"></svg>
 
-      <svg class="ap-spokes" id="apSpokes" aria-hidden="true" preserveAspectRatio="none"></svg>
+    <div class="ap-hub" id="apHub">
+      <div class="k">Start here</div>
+      <h2>What do you need your property to do?</h2>
+    </div>
 
-      <!-- CENTRE HUB -->
-      <div class="ap-hub" id="apHub">
-        <span class="ap-hub-logo" aria-hidden="true">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M60 6 L106 24 V60 C106 89 86 108 60 116 C34 108 14 89 14 60 V24 Z" fill="#0F2742"/><path d="M40 60 L54 75 L83 42" fill="none" stroke="#C2913B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <span class="ap-hub-mark"><span class="a">Asset</span><span class="p">Proof</span></span>
-        <p class="ap-hub-umbrella">One walkthrough. Every document.</p>
+    <div class="ap-branches" id="apBranches">
+
+      <!-- 1 LET IT -->
+      <div class="ap-branch" data-branch="0" tabindex="0" role="button" aria-expanded="false" aria-controls="out0">
+        <div class="ap-branch-head">
+          <span class="ap-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg>
+          </span>
+          <div class="ap-branch-titles">
+            <span class="ap-for">For landlords &amp; letting agents</span>
+            <h3>I'm letting a property <svg class="ap-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></h3>
+            <p class="ap-teaser">Tenants in, deposits protected.</p>
+          </div>
+        </div>
+        <div class="ap-outputs" id="out0">
+          <ul>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/the-observation-foundation.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Owner &amp; letting report</span><span class="ben">A benchmarked rental value from your home's beds, baths and inclusions.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/inventory-condition-register-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Move-in inventory &amp; condition record</span><span class="ben">A dispute-proof handover.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/move-in-condition-report-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Check-in / check-out comparison</span><span class="ben">Deposits settled fairly, fast.</span></a></li>
+          </ul>
+        </div>
       </div>
 
-      <!-- SIX NEED NODES -->
-      <div class="ap-nodes-wrap" id="apNodes">
-
-        <!-- 1 LET IT -->
-        <div class="ap-node" data-node="0" tabindex="0" role="button" aria-expanded="false" aria-controls="out0">
-          <div class="ap-node-head">
-            <span class="ap-node-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg>
-            </span>
-            <div class="ap-node-titles">
-              <span class="ap-for">For landlords &amp; letting agents</span>
-              <h3>I'm letting a property</h3>
-              <p class="ap-teaser">Tenants in, deposits protected.</p>
-            </div>
-            <svg class="ap-node-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </div>
-          <div class="ap-outputs" id="out0">
-            <ul>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/rentals" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Owner &amp; letting report</span><span class="ben">A benchmarked rental value from your home's beds, baths and inclusions.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/rentals" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Move-in inventory &amp; condition record</span><span class="ben">A dispute-proof handover.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/rentals" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Check-in / check-out comparison</span><span class="ben">Deposits settled fairly, fast.</span></a></li>
-            </ul>
+      <!-- 2 SELL IT -->
+      <div class="ap-branch" data-branch="1" tabindex="0" role="button" aria-expanded="false" aria-controls="out1">
+        <div class="ap-branch-head">
+          <span class="ap-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v7l9 4 9-4V7"/><path d="M12 11v7"/></svg>
+          </span>
+          <div class="ap-branch-titles">
+            <span class="ap-for">For sellers &amp; estate agents</span>
+            <h3>I'm selling a home <svg class="ap-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></h3>
+            <p class="ap-teaser">List faster, hand over clean.</p>
           </div>
         </div>
-
-        <!-- 2 SELL IT -->
-        <div class="ap-node" data-node="1" tabindex="0" role="button" aria-expanded="false" aria-controls="out1">
-          <div class="ap-node-head">
-            <span class="ap-node-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v7l9 4 9-4V7"/><path d="M12 11v7"/></svg>
-            </span>
-            <div class="ap-node-titles">
-              <span class="ap-for">For sellers &amp; estate agents</span>
-              <h3>I'm selling a home</h3>
-              <p class="ap-teaser">List faster, hand over clean.</p>
-            </div>
-            <svg class="ap-node-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </div>
-          <div class="ap-outputs" id="out1">
-            <ul>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/sales" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Ready-to-paste listing &amp; marketing copy</span><span class="ben">Sells faster, looks professional.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/sales" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Condition snapshot</span><span class="ben">A defensible record buyers can trust.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/sales" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Snag &amp; maintenance report</span><span class="ben">Repairs prioritised, with local cost estimates.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/sales" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Investment prospectus</span><span class="ben">Show the income a home can earn.</span></a></li>
-            </ul>
-          </div>
+        <div class="ap-outputs" id="out1">
+          <ul>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/listing-pack-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Ready-to-paste listing &amp; marketing copy</span><span class="ben">Sells faster, looks professional.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/move-in-condition-report-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Condition snapshot</span><span class="ben">A defensible record buyers can trust.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/snag-maintenance-report-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Snag &amp; maintenance report</span><span class="ben">Repairs prioritised, with local cost estimates.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/investment-prospectus-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Investment prospectus</span><span class="ben">Show the income a home can earn.</span></a></li>
+          </ul>
         </div>
-
-        <!-- 3 HOST IT -->
-        <div class="ap-node" data-node="2" tabindex="0" role="button" aria-expanded="false" aria-controls="out2">
-          <div class="ap-node-head">
-            <span class="ap-node-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
-            </span>
-            <div class="ap-node-titles">
-              <span class="ap-for">For short-stay &amp; Airbnb hosts</span>
-              <h3>I'm hosting short-stay guests</h3>
-              <p class="ap-teaser">More bookings, nothing goes missing.</p>
-            </div>
-            <svg class="ap-node-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </div>
-          <div class="ap-outputs" id="out2">
-            <ul>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/short-stay" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Ready-to-paste listing copy</span><span class="ben">More bookings.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/short-stay" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Guest welcome pack &amp; house manual</span><span class="ben">A five-star stay.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/short-stay" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Turnover inventory</span><span class="ben">Par counts that track breakages and loss.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/short-stay" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Market positioning review</span><span class="ben">Price it right for the season.</span></a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 4 INSURE IT -->
-        <div class="ap-node" data-node="3" tabindex="0" role="button" aria-expanded="false" aria-controls="out3">
-          <div class="ap-node-head">
-            <span class="ap-node-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
-            </span>
-            <div class="ap-node-titles">
-              <span class="ap-for">For homeowners &amp; contents</span>
-              <h3>I'm insuring my home</h3>
-              <p class="ap-teaser">Never over- or under-insured.</p>
-            </div>
-            <svg class="ap-node-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </div>
-          <div class="ap-outputs" id="out3">
-            <ul>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/insurance" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Insurance evidence pack</span><span class="ben">Proof of what you own, the day you claim.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/insurance" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>High-value asset register</span><span class="ben">Serial numbers, certificates and high-value items flagged.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/insurance" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Replacement valuation</span><span class="ben">A fair starting point for your sum insured (an opinion of value, not a certified valuation).</span></a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 5 SETTLE AN ESTATE -->
-        <div class="ap-node" data-node="4" tabindex="0" role="button" aria-expanded="false" aria-controls="out4">
-          <div class="ap-node-head">
-            <span class="ap-node-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7L3 13a3 3 0 006 0z"/><path d="M19 7l2 6a3 3 0 01-6 0z"/><path d="M8 21h8"/></svg>
-            </span>
-            <div class="ap-node-titles">
-              <span class="ap-for">For executors &amp; families</span>
-              <h3>I'm settling an estate</h3>
-              <p class="ap-teaser">A defensible record for the family.</p>
-            </div>
-            <svg class="ap-node-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </div>
-          <div class="ap-outputs" id="out4">
-            <ul>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/estates" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Estate &amp; contents register</span><span class="ben">A formal, dated record for fair distribution.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/estates" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Valuation opinion</span><span class="ben">A fair point of departure (an opinion, not a certified valuation).</span></a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 6 RUN AN AGENCY -->
-        <div class="ap-node" data-node="5" tabindex="0" role="button" aria-expanded="false" aria-controls="out5">
-          <div class="ap-node-head">
-            <span class="ap-node-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8h7v13"/><path d="M11 21V4h9v17"/><path d="M7 11v0M7 14v0M7 17v0M15 8v0M15 11v0M15 14v0M15 17v0"/></svg>
-            </span>
-            <div class="ap-node-titles">
-              <span class="ap-for">For partners &amp; operators</span>
-              <h3>I run an agency</h3>
-              <p class="ap-teaser">One system, your brand, every property.</p>
-            </div>
-            <svg class="ap-node-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </div>
-          <div class="ap-outputs" id="out5">
-            <ul>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/partners" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Your brand on every record</span><span class="ben">Co-brand or full white-label.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/partners" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Portfolio condition map</span><span class="ben">Standardised records across every unit.</span></a></li>
-              <li><a class="ap-out" href="https://assetproofsolutions.com/partners" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Baselines that recur and compare over time</span><span class="ben">See what changes, year on year.</span></a></li>
-            </ul>
-          </div>
-        </div>
-
       </div>
-    </section>
 
-    <!-- RELATIONSHIP NOTE -->
-    <p class="ap-relnote"><strong>Many documents, one capture</strong> — the same walkthrough can serve letting, insurance and a future sale.</p>
-
-    <!-- FOOTER -->
-    <footer class="ap-footer">
-      <p class="ap-trust">A specialist team. Your records — branded and defensible — in <b>1–3 days</b>.</p>
-      <div class="ap-ctas">
-        <a class="ap-btn primary" href="https://assetproofsolutions.com/guide" target="_blank" rel="noopener">Download our free city guide</a>
-        <a class="ap-btn secondary" href="https://assetproofsolutions.com/how-it-works" target="_blank" rel="noopener">See how it works</a>
+      <!-- 3 HOST IT -->
+      <div class="ap-branch" data-branch="2" tabindex="0" role="button" aria-expanded="false" aria-controls="out2">
+        <div class="ap-branch-head">
+          <span class="ap-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+          </span>
+          <div class="ap-branch-titles">
+            <span class="ap-for">For short-stay &amp; Airbnb hosts</span>
+            <h3>I'm hosting short-stay guests <svg class="ap-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></h3>
+            <p class="ap-teaser">More bookings, nothing goes missing.</p>
+          </div>
+        </div>
+        <div class="ap-outputs" id="out2">
+          <ul>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/airbnb-listing-copy-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Ready-to-paste listing copy</span><span class="ben">More bookings.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/guest-welcome-pack-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Guest welcome pack &amp; house manual</span><span class="ben">A five-star stay.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/inventory-condition-register-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Turnover inventory</span><span class="ben">Par counts that track breakages and loss.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/market-competitor-review-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Market positioning review</span><span class="ben">Price it right for the season.</span></a></li>
+          </ul>
+        </div>
       </div>
-    </footer>
 
-  </div><!-- /stage -->
-</div><!-- /wrap -->
+      <!-- 4 INSURE IT -->
+      <div class="ap-branch" data-branch="3" tabindex="0" role="button" aria-expanded="false" aria-controls="out3">
+        <div class="ap-branch-head">
+          <span class="ap-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <div class="ap-branch-titles">
+            <span class="ap-for">For homeowners &amp; contents</span>
+            <h3>I'm insuring my home <svg class="ap-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></h3>
+            <p class="ap-teaser">Never over- or under-insured.</p>
+          </div>
+        </div>
+        <div class="ap-outputs" id="out3">
+          <ul>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/insurance-evidence-pack-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Insurance evidence pack</span><span class="ben">Proof of what you own, the day you claim.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/insurance-evidence-pack-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>High-value asset register</span><span class="ben">Serial numbers, certificates and high-value items flagged.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/replacement-valuation-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Replacement valuation</span><span class="ben">A fair starting point for your sum insured (an opinion of value, not a certified valuation).</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5 SETTLE AN ESTATE -->
+      <div class="ap-branch" data-branch="4" tabindex="0" role="button" aria-expanded="false" aria-controls="out4">
+        <div class="ap-branch-head">
+          <span class="ap-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7L3 13a3 3 0 006 0z"/><path d="M19 7l2 6a3 3 0 01-6 0z"/><path d="M8 21h8"/></svg>
+          </span>
+          <div class="ap-branch-titles">
+            <span class="ap-for">For executors &amp; families</span>
+            <h3>I'm settling an estate <svg class="ap-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></h3>
+            <p class="ap-teaser">A defensible record for the family.</p>
+          </div>
+        </div>
+        <div class="ap-outputs" id="out4">
+          <ul>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/the-observation-foundation.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Estate &amp; contents register</span><span class="ben">A formal, dated record for fair distribution.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/replacement-valuation-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Valuation opinion</span><span class="ben">A fair point of departure (an opinion, not a certified valuation).</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6 RUN AN AGENCY -->
+      <div class="ap-branch" data-branch="5" tabindex="0" role="button" aria-expanded="false" aria-controls="out5">
+        <div class="ap-branch-head">
+          <span class="ap-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8h7v13"/><path d="M11 21V4h9v17"/><path d="M7 11v0M7 14v0M7 17v0M15 8v0M15 11v0M15 14v0M15 17v0"/></svg>
+          </span>
+          <div class="ap-branch-titles">
+            <span class="ap-for">For partners &amp; operators</span>
+            <h3>I run an agency <svg class="ap-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></h3>
+            <p class="ap-teaser">One system, your brand, every property.</p>
+          </div>
+        </div>
+        <div class="ap-outputs" id="out5">
+          <ul>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/B2C_AssetProof_Documentation_Engine.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Your brand on every record</span><span class="ben">Co-brand or full white-label.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/inventory-condition-register-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Portfolio condition map</span><span class="ben">Standardised records across every unit.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/the-observation-foundation.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">›</span>Baselines that recur and compare over time</span><span class="ben">See what changes, year on year.</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 7 MAINTAIN AN ESTATE -->
+      <div class="ap-branch" data-branch="6" tabindex="0" role="button" aria-expanded="false" aria-controls="out6">
+        <div class="ap-branch-head">
+          <span class="ap-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3z"/></svg>
+          </span>
+          <div class="ap-branch-titles">
+            <span class="ap-for">For developers, HOAs &amp; managing agents</span>
+            <h3>I manage an estate or new build <svg class="ap-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></h3>
+            <p class="ap-teaser">Maintenance proven, liability covered.</p>
+          </div>
+        </div>
+        <div class="ap-outputs" id="out6">
+          <ul>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/estate-maintenance-manual-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">&rsaquo;</span>Estate maintenance manual</span><span class="ben">Every common-area feature documented, with care schedules and brands.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/estate-maintenance-manual-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">&rsaquo;</span>10-year maintenance &amp; reserve plan</span><span class="ben">Compliance-ready, costed by interval.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/estate-maintenance-signoff-register-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">&rsaquo;</span>Living signoff register</span><span class="ben">Dated proof that upkeep was done, year on year.</span></a></li>
+            <li><a class="ap-out" href="https://mikesmorie.github.io/assetproof-docs/estate-maintenance-for-developers-sample.pdf" target="_blank" rel="noopener"><span class="doc"><span class="arr">&rsaquo;</span>Handover acknowledgement</span><span class="ben">The body corporate signed receipt that closes the loop.</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RELATIONSHIP NOTE -->
+  <p class="ap-relnote"><strong>Many documents, one capture</strong> — the same walkthrough can serve letting, insurance, a future sale — even an estate maintenance record.</p>
+
+  <!-- FOOTER -->
+  <footer class="ap-footer">
+    <p class="ap-trust">A specialist team. Your records — branded and defensible — in <b>1–3 days</b>.</p>
+    <div class="ap-ctas">
+      <a class="ap-btn primary" href="https://mikesmorie.github.io/assetproof-docs/guide-book-sample.pdf" target="_blank" rel="noopener">Download our free city guide</a>
+      <a class="ap-btn secondary" href="https://mikesmorie.github.io/assetproof-docs/the-observation-foundation.pdf" target="_blank" rel="noopener">See how it works</a>
+    </div>
+  </footer>
+
+</div>
 
 <script>
 (function(){
-  var wrap     = document.querySelector('.ap-wrap');
-  var bar      = document.getElementById('apBar');
-  var stage    = document.getElementById('apStage');
-  var radial   = document.getElementById('apRadial');
-  var hub      = document.getElementById('apHub');
-  var spokes   = document.getElementById('apSpokes');
-  var nodes    = Array.prototype.slice.call(document.querySelectorAll('.ap-node'));
+  var branchesWrap = document.getElementById('apBranches');
+  var branches = Array.prototype.slice.call(branchesWrap.querySelectorAll('.ap-branch'));
+  var hub = document.getElementById('apHub');
+  var svg = document.getElementById('apConnectors');
 
-  /* ---------- master collapse / expand ---------- */
-  function setCollapsed(state){
-    wrap.classList.toggle('collapsed', state);
-    bar.setAttribute('aria-expanded', String(!state));
-    if(!state){
-      // re-measure spokes once the stage is open again
-      setTimeout(buildSpokes, 80);
-      setTimeout(buildSpokes, 600);
-    }
-  }
-  bar.addEventListener('click', function(){
-    setCollapsed(!wrap.classList.contains('collapsed'));
-  });
-  // honour the embed flag
-  if((wrap.getAttribute('data-start')||'').toLowerCase() === 'collapsed'){
-    setCollapsed(true);
-  }
-
-  /* ---------- node activate (hover / tap / keyboard) ---------- */
-  nodes.forEach(function(n){
-    var head = n.querySelector('.ap-node-head');
+  // touch / click to toggle (also handles keyboard via click)
+  branches.forEach(function(b){
+    var head = b.querySelector('.ap-branch-head');
     head.addEventListener('click', function(e){
-      if(e.target.closest('.ap-out')) return; // let output links work
-      toggle(n);
+      // don't toggle when an output link inside is clicked
+      if(e.target.closest('.ap-out')) return;
+      toggle(b);
     });
-    n.addEventListener('keydown', function(e){
-      if(e.target !== n) return;
+    b.addEventListener('keydown', function(e){
+      if(e.target !== b) return; // only when the card itself is focused
       if(e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
-        e.preventDefault(); toggle(n);
+        e.preventDefault();
+        toggle(b);
       } else if(e.key === 'Escape'){
-        closeAll(); n.focus();
+        closeAll();
       }
     });
-    // desktop hover preview
-    n.addEventListener('mouseenter', function(){ litSpoke(n, true); });
-    n.addEventListener('mouseleave', function(){ if(!n.classList.contains('open')) litSpoke(n, false); });
+    // desktop hover keeps connectors lit
+    b.addEventListener('mouseenter', function(){ litConnector(b, true); });
+    b.addEventListener('mouseleave', function(){ if(!b.classList.contains('open')) litConnector(b, false); });
   });
 
-  function toggle(n){
-    var isOpen = n.classList.contains('open');
+  function toggle(b){
+    var isOpen = b.classList.contains('open');
     closeAll();
     if(!isOpen){
-      n.classList.add('open');
-      n.setAttribute('aria-expanded','true');
-      radial.classList.add('has-active');
-      litSpoke(n, true);
+      b.classList.add('open');
+      b.setAttribute('aria-expanded','true');
+      branchesWrap.classList.add('has-active');
+      litConnector(b, true);
     }
   }
   function closeAll(){
-    nodes.forEach(function(x){
+    branches.forEach(function(x){
       x.classList.remove('open');
       x.setAttribute('aria-expanded','false');
-      litSpoke(x, false);
+      litConnector(x, false);
     });
-    radial.classList.remove('has-active');
-  }
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeAll();
-  });
-
-  /* ---------- radial layout (wide screens) ---------- */
-  function isWide(){ return window.innerWidth >= 720; }
-
-  function layoutNodes(){
-    if(!isWide()){
-      nodes.forEach(function(n){ n.style.left=''; n.style.top=''; n.classList.remove('flip-up'); });
-      return;
-    }
-    var w = radial.clientWidth;
-    var h = radial.clientHeight;
-    var cx = w/2, cy = h/2;
-    var radius = Math.min(w, h)/2 - 105;   // ring radius, keeps cards inside canvas
-    if(radius < 240) radius = 240;
-    var n = nodes.length;
-    // start at top (-90deg) and step evenly
-    for(var i=0;i<n;i++){
-      var ang = (-90 + (360/n)*i) * Math.PI/180;
-      var x = cx + radius*Math.cos(ang);
-      var y = cy + radius*Math.sin(ang);
-      nodes[i].style.left = x + 'px';
-      nodes[i].style.top  = y + 'px';
-      // nodes in the lower half flip their panel upward so it stays in view
-      nodes[i].classList.toggle('flip-up', Math.sin(ang) > 0.25);
-    }
+    branchesWrap.classList.remove('has-active');
   }
 
-  /* ---------- curved spokes (SVG) ---------- */
-  var paths = [];
-  function buildSpokes(){
-    layoutNodes();
-    spokes.innerHTML = '';
-    paths = [];
-    if(!isWide()){ spokes.style.display='none'; return; }
-    spokes.style.display = 'block';
-    var w = radial.clientWidth, h = radial.clientHeight;
-    spokes.setAttribute('viewBox','0 0 '+w+' '+h);
-    var rRect = radial.getBoundingClientRect();
-    var hRect = hub.getBoundingClientRect();
-    var hx = hRect.left - rRect.left + hRect.width/2;
-    var hy = hRect.top  - rRect.top  + hRect.height/2;
-    var hubR = Math.min(hRect.width, hRect.height)/2;
-    nodes.forEach(function(node, i){
-      var nRect = node.getBoundingClientRect();
-      var nx = nRect.left - rRect.left + nRect.width/2;
-      var ny = nRect.top  - rRect.top  + nRect.height/2;
-      // start point pushed to the hub's edge toward the node
-      var dx = nx - hx, dy = ny - hy;
-      var dist = Math.sqrt(dx*dx + dy*dy) || 1;
-      var sx = hx + (dx/dist)*hubR;
-      var sy = hy + (dy/dist)*hubR;
-      // gentle curve: control point offset perpendicular to the line
-      var mx = (sx+nx)/2, my = (sy+ny)/2;
-      var px = -dy/dist, py = dx/dist;        // perpendicular unit
-      var curve = dist*0.12;
-      var cxp = mx + px*curve, cyp = my + py*curve;
-      var d = 'M '+sx.toFixed(1)+' '+sy.toFixed(1)+
-              ' Q '+cxp.toFixed(1)+' '+cyp.toFixed(1)+
-              ' '+nx.toFixed(1)+' '+ny.toFixed(1);
-      var p = document.createElementNS('http://www.w3.org/2000/svg','path');
-      p.setAttribute('d', d);
-      spokes.appendChild(p);
-      paths[i] = p;
-    });
-    // keep any open node's spoke lit
-    nodes.forEach(function(node,i){
-      if(node.classList.contains('open') && paths[i]) paths[i].classList.add('lit');
+  // ---- connector lines (drawn on wide screens) ----
+  var lines = [];
+  function buildConnectors(){
+    svg.innerHTML='';
+    lines = [];
+    // only draw radial connectors when laid out wide enough that the hub sits above
+    if(window.innerWidth < 620){ svg.style.display='none'; return; }
+    svg.style.display='block';
+    var org = svg.parentNode.getBoundingClientRect();
+    svg.setAttribute('viewBox','0 0 '+org.width+' '+org.height);
+    var hubR = hub.getBoundingClientRect();
+    var hx = hubR.left - org.left + hubR.width/2;
+    var hy = hubR.bottom - org.top;
+    branches.forEach(function(b,i){
+      var r = b.getBoundingClientRect();
+      var bx = r.left - org.left + r.width/2;
+      var by = r.top - org.top;
+      var ln = document.createElementNS('http://www.w3.org/2000/svg','line');
+      ln.setAttribute('x1',hx); ln.setAttribute('y1',hy);
+      ln.setAttribute('x2',bx); ln.setAttribute('y2',by);
+      svg.appendChild(ln);
+      lines[i]=ln;
     });
   }
-  function litSpoke(node, on){
-    var i = nodes.indexOf(node);
-    if(paths[i]) paths[i].classList.toggle('lit', !!on);
+  function litConnector(b, on){
+    var i = branches.indexOf(b);
+    if(lines[i]) lines[i].classList.toggle('lit', !!on);
   }
 
   var rt;
-  function rebuild(){ clearTimeout(rt); rt = setTimeout(buildSpokes, 60); }
+  function rebuild(){ clearTimeout(rt); rt=setTimeout(buildConnectors, 60); }
   window.addEventListener('resize', rebuild);
-  window.addEventListener('load', buildSpokes);
-  buildSpokes();
-  setTimeout(buildSpokes, 300);
+  window.addEventListener('load', buildConnectors);
+  // initial draw (in case load already fired in embedded context)
+  buildConnectors();
+  setTimeout(buildConnectors, 300);
 })();
 </script>
-<!-- auto-resize: reports height to a parent page when embedded in an iframe (harmless when opened standalone) -->
 <script>
 (function(){
-  function postSize(){
-    var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight);
-    try{ parent.postMessage({type:'apResize', height:h}, '*'); }catch(e){}
-  }
-  window.addEventListener('load', postSize);
-  window.addEventListener('resize', postSize);
-  document.addEventListener('click', function(){ setTimeout(postSize, 120); setTimeout(postSize, 520); });
-  document.addEventListener('transitionend', postSize);
-  setTimeout(postSize, 600);
+  function ph(){ try{ parent.postMessage({type:'apResize',height:document.body.scrollHeight},'*'); }catch(e){} }
+  window.addEventListener('load',ph); window.addEventListener('resize',ph);
+  document.addEventListener('click',function(){ setTimeout(ph,450); });
+  setTimeout(ph,300);
 })();
 </script>
 </body>
